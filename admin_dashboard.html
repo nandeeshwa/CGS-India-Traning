@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #eaeaea;
+        }
+        .navbar {
+            background-color: black;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        .navbar-nav .nav-link.active {
+            color: #eaeaea;
+        }
+        .card {
+            border-color: #eaeaea;
+        }
+        .card-header {
+            background-color: #eaeaea;
+            color: black;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .btn-dark {
+            background-color: black;
+            border-color: black;
+        }
+        .btn-dark:hover {
+            background-color: #333;
+            border-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">User Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+            </ul>
+            <form class="d-flex ms-auto">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-dark" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Overview Metrics Cards -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        Total Tickets
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="totalTickets">34</h5>
+                        <p class="card-text">Total number of tickets across all users.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        Tickets Escalated
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="escalatedTickets">13</h5>
+                        <p class="card-text">Total number of escalated tickets.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Active Users
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="activeUsers">5</h5>
+                        <p class="card-text">Number of active users.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submitted Tickets -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        Submitted Tickets
+                    </div>
+                    <div class="card-body">
+                        <ul id="ticketList" class="list-group">
+                            <!-- Tickets will be dynamically loaded here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function loadTickets() {
+            fetch('/api/tickets')  // Adjust URL based on your backend
+                .then(response => response.json())
+                .then(data => {
+                    const ticketList = document.getElementById('ticketList');
+                    ticketList.innerHTML = '';
+                    data.forEach(ticket => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-group-item';
+                        listItem.innerHTML = `<strong>${ticket.title}</strong><p>${ticket.description}</p>`;
+                        ticketList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTickets);
+    </script>
+</body>
+</html>
