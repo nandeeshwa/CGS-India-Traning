@@ -1,0 +1,43 @@
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 30px; /* Adjusted padding for better spacing */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Added margin to center container vertically */
+}
+
+.text {
+    margin-bottom: 30px; /* Adjusted margin for spacing */
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px; /* Increased width */
+    height: 150px; /* Increased height */
+    font-size: 3rem; /* Increased font size */
+    cursor: pointer;
+    border: 4px solid #000; /* Slightly thicker border */
+    background-color: #fff;
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
+.box:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.winner {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

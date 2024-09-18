@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #eaeaea;
+        }
+        .navbar {
+            background-color: black;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+            color: #eaeaea;
+        }
+        .card {
+            border-color: #eaeaea;
+            margin-bottom: 1rem;
+        }
+        .card-header {
+            color: white;
+        }
+        .btn-dark {
+            background-color: black;
+            border-color: black;
+        }
+        .btn-dark:hover {
+            background-color: #333;
+            border-color: #333;
+        }
+        .loading-spinner {
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><i class="bi bi-house-door"></i> Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-people"></i> User Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-file-earmark-bar-graph"></i> Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                </li>
+            </ul>
+            <!-- Search Form -->
+            <form class="d-flex ms-auto" id="searchForm">
+                <input class="form-control me-2" type="search" placeholder="Search Tickets" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Overview Metrics Cards -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <i class="bi bi-clipboard-data"></i> Total Tickets
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="totalTickets">20</h5>
+                        <p class="card-text">Total number of tickets across all users.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <i class="bi bi-exclamation-triangle"></i> Tickets Escalated
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="escalatedTickets">10</h5>
+                        <p class="card-text">Total number of escalated tickets.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <i class="bi bi-person-check"></i> Active Users
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="activeUsers">5</h5>
+                        <p class="card-text">Number of active users.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submitted Tickets -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <i class="bi bi-list-check"></i> Submitted Tickets
+                    </div>
+                    <div class="card-body">
+                        <div id="loadingIndicator" class="loading-spinner">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <ul id="ticketList" class="list-group">
+                            <!-- Tickets will be dynamically loaded here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to fetch tickets and update the dashboard
+        function loadTickets() {
+            document.getElementById('loadingIndicator').style.display = 'block'; // Show loading indicator
+            fetch('/api/tickets')  // Replace with your API endpoint
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('loadingIndicator').style.display = 'none'; // Hide loading indicator
+                    const ticketList = document.getElementById('ticketList');
+                    ticketList.innerHTML = '';
+                    data.forEach(ticket => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-group-item';
+                        listItem.innerHTML = `<strong>${ticket.title}</strong><p>${ticket.description}</p>`;
+                        ticketList.appendChild(listItem);
+                    });
+                    // Update metrics
+                    document.getElementById('totalTickets').innerText = data.length;
+                    document.getElementById('escalatedTickets').innerText = data.filter(ticket => ticket.escalated).length;
+                    document.getElementById('activeUsers').innerText = data.filter(ticket => ticket.status === 'active').length;
+                })
+                .catch(error => {
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                    console.error('Error fetching tickets:', error);
+                });
+        }
+
+        // Event listener for search form
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const query = e.target[0].value;
+            console.log('Searching for:', query); // Implement search functionality
+        });
+
+        // Initialize Dashboard
+        document.addEventListener('DOMContentLoaded', loadTickets);
+    </script>
+</body>
+</html>

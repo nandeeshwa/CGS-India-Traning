@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #eaeaea;
+        }
+        .navbar {
+            background-color: black;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        .navbar-nav .nav-link.active {
+            color: #eaeaea;
+        }
+        .card {
+            border-color: #eaeaea;
+        }
+        .card-header {
+            background-color: #eaeaea;
+            color: black;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .chart-placeholder {
+            width: 100%;
+            height: 300px;
+            background: white;
+            border: 1px solid #eaeaea;
+            border-radius: .25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6c757d;
+            font-size: 1.5rem;
+        }
+        .btn-primary {
+            background-color: black;
+            border-color: black;
+        }
+        .btn-primary:hover {
+            background-color: #333;
+            border-color: #333;
+        }
+        .form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: .25rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">User Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        My Profile
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+                        <li><a class="dropdown-item" href="#">Profile Details</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown ms-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSearch" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Search
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownSearch">
+                        <li>
+                            <form class="px-4 py-3">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Personal Metrics Cards -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Open Tickets
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">10</h5>
+                        <p class="card-text">Number of tickets currently open.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Resolved Tickets
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">45</h5>
+                        <p class="card-text">Number of tickets resolved.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Pending Actions
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">5</h5>
+                        <p class="card-text">Number of pending actions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Recent Activities Chart -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Recent Activities
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-placeholder">
+                            Recent Activities Chart
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ticket Status Chart -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Ticket Status
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-placeholder">
+                            Ticket Status Chart
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ticket Submission Form -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card form-container">
+                    <div class="card-header">
+                        Raise a New Ticket
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="ticketTitle" class="form-label">Ticket Title</label>
+                                <input type="text" class="form-control" id="ticketTitle" placeholder="Enter ticket title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="ticketDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="ticketDescription" rows="4" placeholder="Enter ticket description"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ticketPriority" class="form-label">Priority</label>
+                                <select class="form-select" id="ticketPriority">
+                                    <option selected>Select priority</option>
+                                    <option value="1">Low</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">High</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Ticket</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

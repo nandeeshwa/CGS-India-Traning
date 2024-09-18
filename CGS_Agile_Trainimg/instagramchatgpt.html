@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    height: 30px;
+}
+
+.search-bar {
+    flex: 1;
+    margin: 0 20px;
+    padding: 5px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+}
+
+.header-icons .icon {
+    height: 30px;
+    margin-left: 15px;
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+}
+
+.profile-info h2 {
+    margin: 0;
+}
+
+.posts .post {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-user-pic {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+}
+
+.post-actions {
+    margin-top: 10px;
+}
+
+.like-button, .comment-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+footer {
+    background-color: #fff;
+    border-top: 1px solid #dbdbdb;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" class="logo">
+            <input type="text" placeholder="Search" class="search-bar">
+            <div class="header-icons">
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.png" alt="User Icon" class="icon"></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="profile-section">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <h2>username</h2>
+                <p>Bio goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </section>
+
+        <section class="posts">
+            <!-- Post Example -->
+            <article class="post">
+                <div class="post-header">
+                    <img src="https://via.placeholder.com/50" alt="User" class="post-user-pic">
+                    <span class="post-username">username</span>
+                </div>
+                <img src="https://via.placeholder.com/600x400" alt="Post Image" class="post-image">
+                <div class="post-actions">
+                    <button class="like-button">❤️</button>
+                    <button class="comment-button">💬</button>
+                </div>
+                <div class="post-content">
+                    <p><strong>username</strong> Caption for the photo goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </article>
+            <!-- More posts can be added here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Instagram Clone</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

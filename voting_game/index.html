@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voting Game</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"/>
+    <style>
+  
+        .row{
+            height: 550px;
+            margin: 50px;
+            }
+        .finish{
+            margin-left: 500px;
+        }
+    
+    </style>
+  </head>
+  <body >
+    <div  class="container-fluid ">
+        <div class="row shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="text-center "> <h1> Voting Game</h1></div>
+            <div id="bjp" class="container bg-white col-md-3 card " >
+                <div class="photo  mt-3 text-center" style="height: 200px;"><img src="bjp.jpeg" alt="BJP" class="img-fluid" /></div>
+                <div class="bjp  mt-3 text-center"><h1>Bjp</h1></div>
+                <div class=" mt-1 text centre"><h1 id="score1" class="text-center">0</h1></div>
+                <div class="btn btn-outline-primary w-100 mt-5" id="btn1" data-score="score1">Vote</div>
+              </div>
+              <div class="container bg-white col-md-3 card " >
+                <div class="photo  mt-3 text-center" style="height: 200px;"><img src="brs.jpeg" alt="BJP" /></div>
+                <div class="bjp  mt-3 text-center"><h1>Brs</h1></div>
+                <div class=" mt-1 text centre"><h1 id="score2"class="text-center">0</h1></div>
+                <div class="btn btn-outline-primary w-100 mt-5" id="btn2" data-score="score2">Vote</div>
+              </div>
+              <div class="container bg-white col-md-3 card " >
+                <div class="photo  mt-3 text-center " style="height: 200px;"><img src="congress.png" alt="BJP" /></div>
+                <div class="bjp  mt-3 text-center"><h1>Congress</h1></div>
+                <div class=" mt-1 text centre"><h1 id="score3" class="text-center">0</h1></div>
+                <div class="btn btn-outline-primary w-100 mt-5" id="btn3" data-score="score3">Vote</div>
+              </div>
+          <div class="container bg-white col-md-3 card " >
+            <div class="photo  mt-3 text-center" style="height: 200px;"><img src="./janasena.png" alt="BJP" /></div>
+            <div class="bjp  mt-3 text-center"><h1>Janasena</h1></div>
+            <div class=" mt-1 text centre"><h1 id="score4" class="text-center">0</h1></div>
+            <div class="btn btn-outline-primary w-100 mt-5" id="btn4" data-score="score4">Vote</div>
+          </div>
+        </div>
+        <div class="finish d-flex">
+            <div class="btn btn-primary w-50 " id="finish" onclick="Result()"> FINISH</div>
+            <div class="mx-5 btn btn-primary">
+              RESULT
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Background Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #colorInput {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #changeColorBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Background Color</h1>
+    <input type="color" id="colorInput" />
+    <br />
+    <button id="changeColorBtn">Change Background Color</button>
+    
+    <script>
+        const colorInput = document.getElementById('colorInput');
+        const changeColorBtn = document.getElementById('changeColorBtn');
+        
+        // When the button is clicked, change the background color
+        changeColorBtn.addEventListener('click', function() {
+            document.body.style.backgroundColor = colorInput.value;
+        });
+    </script>
+</body>
+</html>
