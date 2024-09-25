@@ -1,0 +1,90 @@
+
+body {
+    background-color: rgb(24, 25, 24); 
+    color: white;
+    font-family: 'Helvetica', sans-serif;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #1DB954;
+}
+
+
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+}
+
+.nav-link {
+    color: #e0e0e0 !important;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #1DB954 !important; 
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.dropdown-menu {
+    background-color: #222;
+    color: #fff;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #e0e0e0;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #1DB954;
+    color: #fff;
+}
+
+.dropdown-menu img {
+    border-radius: 50%;
+}
+
+.dropdown-menu p {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    margin: 0; 
+}
+
+
+.card {
+    background-color: #FFF; 
+    color: #000; 
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+}
+
+.card img {
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+audio {
+    width: 100%; 
+    margin-top: 10px; 
+}
